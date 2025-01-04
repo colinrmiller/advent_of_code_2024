@@ -52,6 +52,7 @@ def get_input(day: int, year: int = year, overwrite: bool = False):
 
     file_name = os.path.join(f"day{paddedDay}", "input.txt")
     solve_file = os.path.join(f"day{paddedDay}", "solve.m")
+    test_file = os.path.join(f"day{paddedDay}", "test.txt")
 
     response = requests.get(
             f"https://adventofcode.com/{year}/day/{day}/input",
@@ -67,7 +68,9 @@ def get_input(day: int, year: int = year, overwrite: bool = False):
     with open(file_name, 'w') as file:
         file.write(response.text)
     with open(solve_file, 'w') as file:
-        file.write(f"% Solve day {day} part 1\n% https://adventofcode.com/{year}/day/{day}")
+        file.write(f"% Solve day {day} part 1\n% https://adventofcode.com/{year}/day/{day}\naddpath('../helpers');\nimport helpers.*;")
+    with open(test_file, 'w') as file:
+        file.write(" ")
     return
 
 # file = _set_read_file(input.txt)
