@@ -17,9 +17,9 @@ function [isSafe, isAscending, isDescending, hasProperJumps] = checkSafety(value
     isSafe = ~((~isDescending & ~isAscending) | ~hasProperJumps);
 end
 
-function [answer] = partA()
-    input = FileReaderHelper.read_input("input.txt");
-    answer = 0;
+function [solution] = partA()
+    input = FileReaderHelper.read_input_to_array("input.txt");
+    solution = 0;
 
     for i=1:size(input, 1)
         list = List(input(i, :));
@@ -27,14 +27,14 @@ function [answer] = partA()
         list = list.checkList();
         
         if list.isSafe
-            answer = answer + 1;
+            solution = solution + 1;
         end
     end
 end
 
-function [answer] = partB()
-    input = FileReaderHelper.read_input("test.txt");
-    answer = 0;
+function [solution] = partB()
+    input = FileReaderHelper.read_input_to_array("test.txt");
+    solution = 0;
 
     for i=1:size(input, 1)
         list = List(input(i, :));
@@ -42,7 +42,7 @@ function [answer] = partB()
         list = list.checkList(true);
         
         if list.isSafe
-            answer = answer + 1;
+            solution = solution + 1;
         end
     end
 end

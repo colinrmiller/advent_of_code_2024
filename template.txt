@@ -1,0 +1,36 @@
+addpath('../helpers');
+import helpers.*;
+
+function [solution] = partA()
+    input = FileReaderHelper.read_input("input.txt");
+    solution = 0;
+
+    for i=1:size(input, 1)
+        list = List(input(i, :));
+
+        list = list.checkList();
+        
+        if list.isSafe
+            solution = solution + 1;
+        end
+    end
+end
+
+function [solution] = partB()
+    input = FileReaderHelper.read_input("test.txt");
+    solution = 0;
+
+    for i=1:size(input, 1)
+        list = List(input(i, :));
+
+        list = list.checkList(true);
+        
+        if list.isSafe
+            solution = solution + 1;
+        end
+    end
+end
+
+
+disp(partA());
+disp(partB());

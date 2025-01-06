@@ -46,16 +46,19 @@ classdef FileReaderHelper
         end        
 
         function [input] = read_input_to_list(filename)
-            % [rowLen, colLen] = FileReaderHelper.readFileLength(filename);
+            [rowLen, colLen] = FileReaderHelper.readFileLength(filename);
         
             fileID = fopen(filename, 'r');
         
-            % input = zeros(1, colLen);
+            input = zeros(1, colLen);
+            rowIndex = 1;
         
-            input = fgetl(fileID);
+            line = fgetl(fileID);
     
-            % input = FileReaderHelper.updateArrayRow(input, 1, line);
-            
+            input = FileReaderHelper.updateArrayRow(input, rowIndex, line);
+        
+            rowIndex = rowIndex + 1;
+    
             fclose(fileID);
         end        
 
