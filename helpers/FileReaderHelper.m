@@ -45,6 +45,20 @@ classdef FileReaderHelper
             fclose(fileID);
         end        
 
+        function [input] = read_input_chars_to_array(filename)
+            fileID = fopen(filename, 'r');
+        
+            input = [];
+        
+            while ~feof(fileID)
+                line = fgetl(fileID);
+        
+                input = [input; line];
+            end
+        
+            fclose(fileID);
+        end
+
         function [input] = read_input_to_list(filename)
             % [rowLen, colLen] = FileReaderHelper.readFileLength(filename);
         
